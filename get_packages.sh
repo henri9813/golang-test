@@ -3,9 +3,8 @@
 function getGoFiles() {
   golangPaths=( internal pkg )
 
-  for golangPath in ${golangPaths}; do
-    if [[ ! -d ${golangPath} ]]
-    then
+  for golangPath in ${golangPaths[@]}; do
+    if [[ ! -d ${golangPath} ]]; then
         continue
     fi
 
