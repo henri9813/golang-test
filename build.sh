@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 versions=$(wget -q https://registry.hub.docker.com/v1/repositories/golang/tags -O -  \
  | sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' \
