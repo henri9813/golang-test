@@ -18,9 +18,12 @@ services:
     - $PWD:$PWD
 ``` 
 
-And bellow, this is the result:
+Here, is the result of analysing the `project` project
 ```
-test_1  | warning: no packages being tested depend on matches for pattern 
-test_1  | ?     pdf-parser      [no test files]
-pdf-parser_test_1 exited with code 0
+henri@henri-GL752VW:~/GolandProjects/golang-test$ docker-compose up test
+Starting golang-test_test_1 ... done
+Attaching to golang-test_test_1
+test_1  | ?     project [no test files]
+test_1  | ok    project/pkg/substration 0.001s  coverage: 33.3% of statements in project/pkg/substration, project
+golang-test_test_1 exited with code 0
 ```

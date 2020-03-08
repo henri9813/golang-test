@@ -1,3 +1,3 @@
-module little_project
+module project
 
 go 1.13
