@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-project=$(shell basename $(CURDIR))
-packages=$(shell bash /get_packages.sh)
+project=$(basename $(pwd))
+packages=$(bash /get_packages.sh)
 
 if [ -z ${BEFORE_RUN} ]
 then
@@ -9,5 +9,5 @@ then
 fi
 
 go test -coverprofile=cover.out \
-	-coverpkg=$(shell echo $(packages) | sed 's/ /,/g'),$(project) \
-	$(project) $(packages)
+	-coverpkg=$(echo ${packages} | sed 's/ /,/g'),${project} \
+	${project} ${packages}
