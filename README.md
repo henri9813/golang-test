@@ -2,11 +2,12 @@
 
 Golang Test Container
 
-This image will permit you to run all test of your project including automatically modules under `pkg` and `internal` directories.
+This image permits to run all the tests of your project, automatically including modules under `pkg` and `internal` directories.
 
 ## Usage
 
 You can use it easily in a `docker-compose.yml`:
+
 ```yaml
 version: '3'
 
@@ -18,9 +19,10 @@ services:
     - $PWD:$PWD
 ``` 
 
-Here, is the result of analysing the `project` project
+Here is the tests result:
+
 ```
-henri@henri-GL752VW:~/GolandProjects/golang-test$ docker-compose up test
+$ docker-compose up test
 Starting golang-test_test_1 ... done
 Attaching to golang-test_test_1
 test_1  | ?     project [no test files]
