@@ -9,5 +9,6 @@ stages:
 build:
   stage: build
   script:
+    - apk add bash
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - bash build.sh
