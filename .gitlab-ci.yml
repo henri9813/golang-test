@@ -1,0 +1,13 @@
+image: docker:19.03.1
+
+services:
+  - docker:19.03.1-dind
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - bash build.sh
