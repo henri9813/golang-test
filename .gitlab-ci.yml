@@ -5,6 +5,7 @@ services:
 
 stages:
   - build
+  - test
 
 build:
   stage: build
@@ -12,3 +13,15 @@ build:
     - apk add bash
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
     - bash build.sh
+
+test:
+  stage: test
+  before_script:
+    - docker info
+    - apk update
+    - apk upgrade
+    - apk add python python-dev py-pip build-base
+    - pip install docker-compose
+  script:
+    - docker-compose up --exit-code test
+    - docker-compose up --exit-code test_prescript
