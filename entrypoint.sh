@@ -3,9 +3,9 @@
 project=$(basename $(pwd))
 packages=$(bash /get_packages.sh)
 
-if [ -z ${BEFORE_RUN} ]
+if [ ! -z ${BEFORE_RUN+x} ]
 then
-  bash ${BEFORE_RUN}
+	bash -c "${BEFORE_RUN}"
 fi
 
 go test -coverprofile=cover.out \
