@@ -18,9 +18,7 @@ test:
   stage: test
   before_script:
     - docker info
-    - apk update
-    - apk upgrade
-    - apk add python python-dev py-pip build-base
+    - apk add --update py3-pip
     - pip install docker-compose
   script:
     - docker-compose up --exit-code test
