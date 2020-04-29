@@ -11,3 +11,5 @@ fi
 go test -coverprofile=cover.out \
 	-coverpkg=$(echo ${packages} | sed 's/ /,/g'),${project} \
 	${project} ${packages}
+
+go tool cover -html cover.out -o cover.html
