@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 project=$(basename $(pwd))
 packages=$(bash /get_packages.sh)
