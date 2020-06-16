@@ -19,7 +19,8 @@ test:
   before_script:
     - docker info
     - apk add --update py3-pip
-    - pip install docker-compose
+    - pip3 install docker-compose
   script:
     - docker-compose up --exit-code test
     - docker-compose up --exit-code test_prescript
+    - docker-compose up --exit-code test_fail && echo "This should fail !" && exit 1

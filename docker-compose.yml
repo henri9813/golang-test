@@ -1,6 +1,9 @@
 version: '3'
 
 services:
+  golang-test:
+    build: .
+    image: henri9813/golang-test
   test:
     image: henri9813/golang-test
     working_dir: /project
@@ -13,3 +16,9 @@ services:
     - ./project_withprescript:/project_withprescript
     environment:
       BEFORE_RUN: "make"
+  test_fail:
+    image: henri9813/golang-test
+    working_dir: /project_fail
+    volumes:
+      - ./project_fail:/project_fail
+
