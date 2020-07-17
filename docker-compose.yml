@@ -1,15 +1,15 @@
-version: '3'
+version: "3"
 
 services:
   test:
     image: henri9813/golang-test
     working_dir: /project
     volumes:
-    - ./project:/project
+      - ./project:/project
   test_prescript:
     image: henri9813/golang-test
     working_dir: /project_withprescript
     volumes:
-    - ./project_withprescript:/project_withprescript
+      - ./project_withprescript:/project_withprescript
     environment:
       BEFORE_RUN: "make"
