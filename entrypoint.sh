@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 project=$(basename $(pwd))
 packages=$(bash /get_packages.sh)
@@ -15,3 +16,5 @@ fi
 go test -coverprofile=cover.out \
 	-coverpkg=$(echo ${packages} | sed 's/ /,/g'),${project} \
 	${project} ${packages}
+
+go tool cover -html cover.out -o cover.html
