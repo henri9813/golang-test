@@ -21,4 +21,11 @@ services:
     working_dir: /project_fail
     volumes:
       - ./project_fail:/project_fail
-
+  test_majorversion:
+    image: henri9813/golang-test
+    working_dir: /project_withmajorversion
+    volumes:
+      - ./project_withmajorversion:/project_withmajorversion
+    environment:
+      PACKAGE_PREFIX: "gitlab.com/test/"
+      MAJOR_VERSION: v2

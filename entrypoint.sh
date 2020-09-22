@@ -2,16 +2,21 @@
 set -e
 
 project=$(basename $(pwd))
-packages=$(bash /get_packages.sh)
 
 if [ ! -z ${BEFORE_RUN+x} ]; then
 	bash -c "${BEFORE_RUN}"
 fi
 
+if [ ! -z ${MAJOR_VERSION+x} ]; then
+	project="${project}/${MAJOR_VERSION}"
+fi
+
 if [ ! -z ${PACKAGE_PREFIX+x} ]; then
 	project="${PACKAGE_PREFIX}${project}"
-	packages=$(bash /get_packages.sh | awk -v PACKAGE_PREFIX=${PACKAGE_PREFIX} '{ print PACKAGE_PREFIX$1}')
 fi
+
+packages=$(bash /get_packages.sh "${project}")
+
 
 go test -coverprofile=cover.out \
 	-coverpkg=$(echo ${packages} | sed 's/ /,/g'),${project} \

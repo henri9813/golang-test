@@ -48,3 +48,12 @@ You will make `import gitlab.com/test/mypackage`.
 However, if your package name ( in go.mod ), is not `gitlab.com/test/mypackage` it will fail.
 
 Then you have to rename your package name in go.mod but you will not be able to do this because `golang-test` will use the relative package name: `mypackage` instead of `gitlab.com/test/mypackage`
+
+### MAJOR_VERSION
+
+Can't be used without `PACKAGE_PREFIX`.
+
+When you release a major other other than v0, v1, you must specify the Major version in your code.
+
+You can follow clear explanation here:
+https://medium.com/@elliotchance/major-versions-in-go-modules-explained-ec7c1df3888b
