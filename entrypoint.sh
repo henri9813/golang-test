@@ -19,6 +19,7 @@ packages=$(bash /get_packages.sh "${project}")
 
 
 go test -coverprofile=cover.out \
+  -p 1 \
 	-coverpkg=$(echo ${packages} | sed 's/ /,/g'),${project} \
 	${project} ${packages}
 
