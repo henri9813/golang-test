@@ -36,6 +36,17 @@ golang-test_test_1 exited with code 0
 
 Execute a script before run the tests ( usefull for preseeding a databse for example )
 
+### SINGLE_PACKAGE
+
+Set to `true` if you are running a package without `go.mod`.
+
+this permit to avoid this error:
+
+```
+cannot find package "." in:
+        /my_package
+```
+
 ### PACKAGE_PREFIX
 
 Required if you want to make your package importable from outside.
