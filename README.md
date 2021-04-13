@@ -53,7 +53,7 @@ Then you have to rename your package name in go.mod but you will not be able to 
 
 Can't be used without `PACKAGE_PREFIX`.
 
-When you release a major other other than v0, v1, you must specify the Major version in your code.
+When you release a major other than v0, v1, you must specify the Major version in your code.
 
 You can follow clear explanation here:
 https://medium.com/@elliotchance/major-versions-in-go-modules-explained-ec7c1df3888b

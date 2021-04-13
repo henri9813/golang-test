@@ -1,7 +1,7 @@
-image: docker:19.03.1
+image: tmaier/docker-compose:20.10
 
 services:
-  - docker:19.03.1-dind
+  - docker:dind
 
 stages:
   - build
@@ -9,6 +9,8 @@ stages:
 
 build:
   stage: build
+  only:
+    - master
   script:
     - apk add bash
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -16,12 +18,7 @@ build:
 
 test:
   stage: test
-  before_script:
-    - docker info
-    - apk add libc-dev
-    - apk add --update py3-pip
-    - pip3 install docker-compose
   script:
-    - docker-compose up --exit-code test
-    - docker-compose up --exit-code test_prescript
-    - docker-compose up --exit-code test_fail && echo "This should fail !" && exit 1
+    - docker-compose up --exit-code test test
+    - docker-compose up --exit-code test_prescript test_prescript
+    - docker-compose up --exit-code test_fail test_fail && exit 1 || echo "this fail as if should be"
