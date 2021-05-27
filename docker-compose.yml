@@ -16,6 +16,13 @@ services:
       - ./project_withprescript:/project_withprescript
     environment:
       BEFORE_RUN: "make"
+  test_nogomod:
+    image: henri9813/golang-test
+    working_dir: /project_nogomod
+    volumes:
+      - ./project_nogomod:/project_nogomod
+    environment:
+      SINGLE_PACKAGE: "true"
   test_fail:
     image: henri9813/golang-test
     working_dir: /project_fail
