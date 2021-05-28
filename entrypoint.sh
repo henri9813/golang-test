@@ -9,7 +9,7 @@ fi
 
 if [[ ${SINGLE_PACKAGE} == "true" ]]
 then
-  GO111MODULE=off go test -coverprofile=cover.out -p 1 ./...
+  GO111MODULE=auto go test -coverprofile=cover.out -p 1 ./...
 else
   if [ ! -z ${MAJOR_VERSION+x} ]; then
     project="${project}/${MAJOR_VERSION}"
