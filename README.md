@@ -4,6 +4,12 @@ Golang Test Container
 
 This image permits to run all the tests of your project, automatically including modules under `pkg` and `internal` directories.
 
+## Supported tags
+
+Supported tags are defined in the `versions.txt`.
+
+If you want a new tag, you can make a Merge request and update this file.
+
 ## Usage
 
 You can use it easily in a `docker-compose.yml`:
