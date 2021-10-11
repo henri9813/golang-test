@@ -2,16 +2,7 @@
 
 if [[ -d logs ]]; then rm -rf logs; fi && mkdir "logs"
 
-versions=$(wget -q https://registry.hub.docker.com/v1/repositories/golang/tags -O - |
-	sed -e 's/[][]//g' -e 's/"//g' -e 's/ //g' |
-	tr '}' '\n' |
-	awk -F: '{print $3}' |
-	grep -v nano | grep -v windows | grep -v cross | grep -v onbuild |
-	grep -v -E "^1.[0-9]([a-z].*|\..*|$|-.*$)$" | # 1.X*
-  grep -v -E "^1.[0-9][0-4]([a-z].*|\..*|$|-.*$)$" | # 1.X* )
-  grep -v -E "^.*alpine.+$" | # *alpine* )
-  grep -v -E "^.*rc.*$" | # *rc* )
-  grep -v -E "^.*beta.+$" ) # *beta* )
+versions=$(cat "versions.txt")
 
 function build() {
 	docker build -t "henri9813/golang-test:${version}" --build-arg "VERSION=${version}" . >>logs/${version}.log
