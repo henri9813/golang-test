@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function getGoFiles() {
-	golangPaths=(internal pkg)
+	golangPaths=(cmd internal pkg)
 	for golangPath in ${golangPaths[@]}; do
 		if [[ ! -d ${golangPath} ]]; then
 			continue
