@@ -74,3 +74,18 @@ When you release a major other than v0, v1, you must specify the Major version i
 
 You can follow clear explanation here:
 https://medium.com/@elliotchance/major-versions-in-go-modules-explained-ec7c1df3888b
+
+### COVERAGE_FILES_NAME_PREFIX
+
+Permit to add a `COVERAGE_FILES_NAME_PREFIX` before the `cover.out` and `cover.html`.
+
+Example:
+
+```
+export COVERAGE_FILES_NAME_PREFIX=project1_
+...
+$ ls
+...
+project1_cover.html
+project1_cover.out
+```
