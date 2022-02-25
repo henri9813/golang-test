@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
-function getGoFiles() {
-	golangPaths=(cmd internal pkg)
-	for golangPath in ${golangPaths[@]}; do
-		if [[ ! -d ${golangPath} ]]; then
-			continue
-		fi
-		packages=$(find "${golangPath}" -name "*.go")
-		for path in ${packages}; do
-			echo "${1}/$(dirname "${path}")"
-		done
+list=$(go list ./...)
+
+# This function generate a sort of `grep -v -e ARG1 -e ARG2 ...`
+function generate_filter_command() {
+	filter_command="grep -v"
+	for filter in ${1}; do
+		filter_command="${filter_command} -e ${filter}"
 	done
 
+	echo "${filter_command}"
 }
 
-getGoFiles ${1} | sort | uniq
+if [ -n "${EXCLUDED_PACKAGES}" ]; then
+	list=$(echo "${list}" | $(generate_filter_command "${EXCLUDED_PACKAGES}"))
+fi
+
+echo "${list}"

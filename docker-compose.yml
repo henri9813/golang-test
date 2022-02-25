@@ -28,11 +28,15 @@ services:
     working_dir: /project_fail
     volumes:
       - ./project_fail:/project_fail
+  test_exclude_packages:
+    image: henri9813/golang-test
+    working_dir: /project_except_some_packages
+    volumes:
+      - ./project_except_some_packages:/project_except_some_packages
+    environment:
+      EXCLUDED_PACKAGES: "addition"
   test_majorversion:
     image: henri9813/golang-test
     working_dir: /project_withmajorversion
     volumes:
       - ./project_withmajorversion:/project_withmajorversion
-    environment:
-      PACKAGE_PREFIX: "gitlab.com/test/"
-      MAJOR_VERSION: v2
