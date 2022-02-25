@@ -53,27 +53,14 @@ cannot find package "." in:
         /my_package
 ```
 
-### PACKAGE_PREFIX
+### EXCLUDED_PACKAGES
 
-Required if you want to make your package importable from outside.
+Permit to define a list of packages separated by spaces to exclude from the test.
 
 Example:
-You have your project available in gitlab.com/test/mypackage and you want to import it on your project.
-
-You will make `import gitlab.com/test/mypackage`.
-
-However, if your package name ( in go.mod ), is not `gitlab.com/test/mypackage` it will fail.
-
-Then you have to rename your package name in go.mod but you will not be able to do this because `golang-test` will use the relative package name: `mypackage` instead of `gitlab.com/test/mypackage`
-
-### MAJOR_VERSION
-
-Can't be used without `PACKAGE_PREFIX`.
-
-When you release a major other than v0, v1, you must specify the Major version in your code.
-
-You can follow clear explanation here:
-https://medium.com/@elliotchance/major-versions-in-go-modules-explained-ec7c1df3888b
+```
+export EXCLUDED_PACKAGES="pkg/addition internal/excludedpackage1"
+```
 
 ### COVERAGE_FILES_NAME_PREFIX
 
