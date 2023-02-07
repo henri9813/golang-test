@@ -20,9 +20,9 @@ test:
   stage: test
   script:
     - docker-compose build
-    - docker-compose up --exit-code test test
-    - docker-compose up --exit-code test_prescript test_prescript
-    - docker-compose up --exit-code test_nogomod test_nogomod
-    - docker-compose up --exit-code test_majorversion test_majorversion
-    - docker-compose up --exit-code test_exclude_packages test_exclude_packages
-    - docker-compose up --exit-code test_fail test_fail && exit 1 || echo "this fail as if should be"
+    - docker-compose up --exit-code-from test test
+    - docker-compose up --exit-code-from test_prescript test_prescript
+    - docker-compose up --exit-code-from test_nogomod test_nogomod
+    - docker-compose up --exit-code-from test_majorversion test_majorversion
+    - docker-compose up --exit-code-from test_exclude_packages test_exclude_packages
+    - docker-compose up --exit-code-from test_fail test_fail && exit 1 || echo "this fail as if should be"
