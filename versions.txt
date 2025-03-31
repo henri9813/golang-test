@@ -1,6 +1,10 @@
 latest
 1
 1-alpine
+1.24
+1.24-alpine
+1.23
+1.23-alpine
 1.22
 1.22-alpine
 1.21
