@@ -76,3 +76,12 @@ $ ls
 project1_cover.html
 project1_cover.out
 ```
+
+### GO_TEST_ARGS
+
+Allows you to pass additional arguments to the `go test` command.
+
+Example:
+```
+export GO_TEST_ARGS='-gcflags="all=-N -l" -count=1'
+```
