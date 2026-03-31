@@ -9,11 +9,11 @@ if [ ! -z ${BEFORE_RUN+x} ]; then
 fi
 
 if [[ ${SINGLE_PACKAGE} == "true" ]]; then
-	GO111MODULE=auto go test ${GO_TEST_ARGS:-} -coverprofile="${COVERAGE_OUT_FILE}" -p 1 ./...
+	GO111MODULE=auto go test "${GO_TEST_ARGS:-}" -coverprofile="${COVERAGE_OUT_FILE}" -p 1 ./...
 else
 	packages=$(bash /get_packages.sh)
 
-	go test ${GO_TEST_ARGS:-} -coverprofile="${COVERAGE_OUT_FILE}" \
+	go test "${GO_TEST_ARGS:-}" -coverprofile="${COVERAGE_OUT_FILE}" \
 		-p 1 \
 		-coverpkg=$(echo ${packages} | sed 's/ /,/g') \
 		${packages}
