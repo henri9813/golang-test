@@ -40,10 +40,3 @@ services:
     working_dir: /project_withmajorversion
     volumes:
       - ./project_withmajorversion:/project_withmajorversion
-  test_additional_go_test_args:
-    image: henri9813/golang-test
-    working_dir: /project
-    volumes:
-      - ./project:/project
-    environment:
-      GO_TEST_ARGS: '-gcflags="all=-N -l" -count=1'
